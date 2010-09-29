@@ -26,8 +26,6 @@
 			</div>
 		</li>
 	<?php
-		/* Changes every other comment to a different class */
-		$oddcomment = ( empty( $oddcomment ) ) ? 'class="alt" ' : '';
 		endforeach; // end for each comment
 	?>	
 	<?php previous_comments_link() ?> <?php next_comments_link() ?>
