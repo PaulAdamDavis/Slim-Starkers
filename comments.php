@@ -12,6 +12,7 @@
 
 <?php if (have_comments()) : ?>
 	<h3 id="comments"><?php comments_number('No Responses', 'One Response', '% Responses' );?> to &#8220;<?php the_title(); ?>&#8221;</h3>	<!-- View functions.php for comment markup -->
+        <ol id="commentList">
 	<?php foreach ($comments as $comment) : ?>
 		<li class="comment-item <?php if (1 == $comment->user_id) $oddcomment = "authcomment"; echo $oddcomment; ?>">
 			<div class="left">
@@ -27,7 +28,8 @@
 		</li>
 	<?php
 		endforeach; // end for each comment
-	?>	
+	?>
+        </ol>	
 	<?php previous_comments_link() ?> <?php next_comments_link() ?>
 <?php else : // this is displayed if there are no comments so far ?>
 	<?php if (comments_open()) : ?>
