@@ -17,6 +17,9 @@
     <!-- The mountain of stuff WP puts in -->
     <?php wp_head(); ?>
 
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="http://codebymonkey.com/wp-content/themes/CodeByMonkey/images/favicon.ico">
+
     <!-- CSS -->
     <link rel="stylesheet" href="<?php bloginfo('stylesheet_url'); ?>" media="screen" />
 
