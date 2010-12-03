@@ -9,16 +9,13 @@
     <link rel="shortcut icon" href="<?php bloginfo('template_url'); ?>/favicon.ico" />
     <title><?php wp_title('&laquo;', true, 'right'); ?> <?php bloginfo('name'); ?></title>
 
-    <!-- Make the HTML5 elements work in IE. I know HTML5 doesn't need script types, but IE need it to download the script to let us not need them later! -->
+    <!-- Make the HTML5 elements work in IE. -->
     <!--[if IE]>
     <script type="text/javascript" src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
 
     <!-- The mountain of stuff WP puts in -->
     <?php wp_head(); ?>
-
-    <!-- Favicon -->
-    <link rel="shortcut icon" href="http://codebymonkey.com/wp-content/themes/CodeByMonkey/images/favicon.ico">
 
     <!-- CSS -->
     <link rel="stylesheet" href="<?php bloginfo('stylesheet_url'); ?>" media="screen" />
