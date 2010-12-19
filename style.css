@@ -15,13 +15,13 @@ html,body,div,span,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,abbr,address
 /*****
 	LAYOUT
 *****/
-.wrapper							{width: 960px; margin: 0 auto;}
+.wrapper													{width: 960px; margin: 0 auto;}
 
 
 /*****
 	GENERAL STYLING
 *****/
-a:link, a:visited                                               {color: #00f;}
-a:active, a:hover, a:focus                                      {color: #090;}
-em, i                                                           {font-style: italic;}
-strong, b                                                       {font-weight: bold;}
+a:link, a:visited 											{color: #00f;}
+a:active, a:hover, a:focus 									{color: #090;}
+em, i 														{font-style: italic;}
+strong, b 													{font-weight: bold;}
