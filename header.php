@@ -19,18 +19,20 @@
 
     <!-- CSS -->
     <link rel="stylesheet" href="<?php bloginfo('stylesheet_url'); ?>" media="screen" />
+    <link rel="stylesheet/less" href="<?php bloginfo('template_url'); ?>/less.less" type="text/css" />
+    <script src="<?php bloginfo('template_url'); ?>/js/less-1.0.35.min.js"></script>
 
     <!-- JavaScript -->
-    <script src="http://code.jquery.com/jquery-1.4.2.min.js"></script> 
+    <script src="http://code.jquery.com/jquery-1.4.4.min.js"></script> 
     <script src="<?php bloginfo('template_url'); ?>/js/scripts.js"></script>
     
 </head>
 <body <?php body_class(); ?>>
 	
 	<div class="wrapper">
-		
+	    		
 	<header>
-		<h1><a href="<?php echo get_option('home'); ?>/"><?php bloginfo('name'); ?></a></h1>
+		<h1><a href="<?php bloginfo('home'); ?>/"><?php bloginfo('name'); ?></a></h1>
 		<h2><?php bloginfo('description'); ?></h2>
 		<nav>
 			<ul>

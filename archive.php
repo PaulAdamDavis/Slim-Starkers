@@ -32,10 +32,7 @@
 
 		<?php if (show_posts_nav()) : ?>
 			<nav class="nextPrevLinks">
-				<ul>
-					<li class="nextLink"><?php next_posts_link('&laquo; Older Entries') ?></li>
-					<li class="prevLink"><?php previous_posts_link('Newer Entries &raquo;') ?></li>
-				</ul>
+				<?php my_paginate_links(); ?>
 			</nav>
 		<?php endif; ?>
 
