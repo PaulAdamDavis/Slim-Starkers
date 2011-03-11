@@ -23,7 +23,7 @@
     <script src="<?php bloginfo('template_url'); ?>/js/less-1.0.35.min.js"></script>
 
     <!-- JavaScript -->
-    <!-- <script src="http://code.jquery.com/jquery-1.4.4.min.js"></script> -->
+    <!-- <script src="http://code.jquery.com/jquery-1.5.1.min.js"></script> -->
     <script src="<?php bloginfo('template_url'); ?>/js/jquery.js"></script>
     <script src="<?php bloginfo('template_url'); ?>/js/scripts.js"></script>
     
