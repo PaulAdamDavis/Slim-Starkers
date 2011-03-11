@@ -26,6 +26,11 @@
     <!-- <script src="http://code.jquery.com/jquery-1.5.1.min.js"></script> -->
     <script src="<?php bloginfo('template_url'); ?>/js/jquery.js"></script>
     <script src="<?php bloginfo('template_url'); ?>/js/scripts.js"></script>
+
+    <!-- Firebug Lite for IE -->
+    <!--[if IE]>
+        <script type="text/javascript" src="https://getfirebug.com/firebug-lite.js"></script>
+    <![endif]-->
     
 </head>
 <body <?php body_class(); ?>>
