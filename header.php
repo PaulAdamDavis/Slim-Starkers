@@ -20,7 +20,7 @@
     <!-- CSS -->
     <link rel="stylesheet" href="<?php bloginfo('stylesheet_url'); ?>" media="screen" />
     <link rel="stylesheet/less" href="<?php bloginfo('template_url'); ?>/less.less" type="text/css" />
-    <script src="<?php bloginfo('template_url'); ?>/js/less-1.0.35.min.js"></script>
+    <script src="<?php bloginfo('template_url'); ?>/js/less-1.0.41.min.js"></script>
 
     <!-- JavaScript -->
     <!-- <script src="http://code.jquery.com/jquery-1.5.1.min.js"></script> -->
