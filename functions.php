@@ -14,7 +14,7 @@
     add_filter('excerpt_more', 'new_excerpt_more');
     
     // Hide Admin Bar in WP 3.1
-    add_filter('show_admin_bar', '__return_false');
+    add_filter('show_admin_bar', '__return_false');    
     
     // Pagination, nativly. (Only works on pretty URLs)
     $wp_rewrite->rules = $feed_rules + $wp_rewrite->rules;    

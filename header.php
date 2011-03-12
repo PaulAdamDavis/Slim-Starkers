@@ -38,8 +38,13 @@
 	<div class="wrapper">
 	    		
 	<header>
-		<h1><a href="<?php bloginfo('home'); ?>/"><?php bloginfo('name'); ?></a></h1>
-		<h2><?php bloginfo('description'); ?></h2>
+	    <?php if (is_front_page()) { ?>
+	        <h1><a href="<?php bloginfo('home'); ?>/"><?php bloginfo('name'); ?></a></h1>
+    		<h2><?php bloginfo('description'); ?></h2>
+	    <?php } else { ?>
+	        <h2><a href="<?php bloginfo('home'); ?>/"><?php bloginfo('name'); ?></a></h2>
+    		<h3><?php bloginfo('description'); ?></h3>
+	    <?php } ?>
 		<nav>
 			<ul>
 				<?php wp_list_pages('title_li=' ); ?>

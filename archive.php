@@ -4,26 +4,26 @@
 
     	<?php $post = $posts[0]; // Hack. Set $post so that the_date() works. ?>
     	<?php if (is_category()) { ?>
-    	    <h2>Archive for the &#8216;<?php single_cat_title(); ?>&#8217; Category</h2>
+    	    <h1>Archive for the &#8216;<?php single_cat_title(); ?>&#8217; Category</h1>
     	<?php } elseif( is_tag() ) { ?>
-    	    <h2>Posts Tagged &#8216;<?php single_tag_title(); ?>&#8217;</h2>
+    	    <h1>Posts Tagged &#8216;<?php single_tag_title(); ?>&#8217;</h1>
     	<?php } elseif (is_day()) { ?>
-    	    <h2>Archive for <?php the_time('F jS, Y'); ?></h2>
+    	    <h1>Archive for <?php the_time('F jS, Y'); ?></h1>
     	<?php } elseif (is_month()) { ?>
-    	    <h2>Archive for <?php the_time('F, Y'); ?></h2>
+    	    <h1>Archive for <?php the_time('F, Y'); ?></h1>
     	<?php } elseif (is_year()) { ?>
-    	    <h2>Archive for <?php the_time('Y'); ?></h2>
+    	    <h1>Archive for <?php the_time('Y'); ?></h1>
     	<?php } elseif (is_author()) { ?>
-    	    <h2>Author Archive</h2>
+    	    <h1>Author Archive</h2>
     	<?php } elseif (isset($_GET['paged']) && !empty($_GET['paged'])) { ?>
-    	    <h2>Blog Archives</h2>
+    	    <h1>Blog Archives</h1>
     	<?php } ?>
 
 		<?php while (have_posts()) : the_post(); ?>
 			<article <?php post_class() ?>>
-				<h3 id="post-<?php the_ID(); ?>">
+				<h2 id="post-<?php the_ID(); ?>">
 				    <a href="<?php the_permalink() ?>" rel="bookmark" title="Permanent Link to <?php the_title_attribute(); ?>"><?php the_title(); ?></a>
-				</h3>
+				</h2>
 				<time datetime="<?php the_time('Y-m-d') ?>" pubdate><?php the_time('l, F jS, Y') ?></time>
 				<?php the_content() ?>
 				<?php comments_popup_link('No Comments &#187;', '1 Comment &#187;', '% Comments &#187;'); ?>
@@ -39,16 +39,15 @@
 	<?php else :
 
 		if ( is_category() ) {
-			printf("<h2>Sorry, but there aren't any posts in the %s category yet.</h2>", single_cat_title('',false));
+			printf("<h1>Sorry, but there aren't any posts in the %s category yet.</h1>", single_cat_title('',false));
 		} else if ( is_date() ) {
-			echo("<h2>Sorry, but there aren't any posts with this date.</h2>");
+			echo("<h1>Sorry, but there aren't any posts with this date.</h1>");
 		} else if ( is_author() ) {
 			$userdata = get_userdatabylogin(get_query_var('author_name'));
-			printf("<h2>Sorry, but there aren't any posts by %s yet.</h2>", $userdata->display_name);
+			printf("<h1>Sorry, but there aren't any posts by %s yet.</h1>", $userdata->display_name);
 		} else {
-			echo("<h2>No posts found.</h2>");
+			echo("<h1>No posts found.</h1>");
 		}
-		get_search_form();
 
 	endif; ?>
 
