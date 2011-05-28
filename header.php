@@ -18,8 +18,8 @@
 
     <!-- CSS -->
     <link rel="stylesheet" href="<?php bloginfo('stylesheet_url'); ?>" media="screen" />
-    <link rel="stylesheet/less" href="<?php bloginfo('template_url'); ?>/less.less" type="text/css" />
-    <script src="<?php bloginfo('template_url'); ?>/js/less-1.0.41.min.js"></script>
+    <link rel="stylesheet/less" href="<?php bloginfo('template_url'); ?>/css/less.less" type="text/css" />
+    <script src="<?php bloginfo('template_url'); ?>/js/less.min.js"></script>
 
     <!-- Firebug Lite for IE -->
     <!--[if IE]>
