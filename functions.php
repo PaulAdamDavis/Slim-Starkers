@@ -52,3 +52,9 @@
             return false;
         endif;
     }
+    
+    // Support featured image
+    add_theme_support('post-thumbnails');
+    
+    // Support menus
+    add_theme_support('menus');
