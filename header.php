@@ -20,11 +20,6 @@
     <link rel="stylesheet" href="<?php bloginfo('stylesheet_url'); ?>" media="screen" />
     <link rel="stylesheet/less" href="<?php bloginfo('template_url'); ?>/css/less.less" type="text/css" />
     <script src="<?php bloginfo('template_url'); ?>/js/less.min.js"></script>
-
-    <!-- Firebug Lite for IE -->
-    <!--[if IE]>
-        <script type="text/javascript" src="https://getfirebug.com/firebug-lite.js"></script>
-    <![endif]-->
     
 </head>
 <body <?php body_class(); ?>>
@@ -32,17 +27,10 @@
 	<div class="wrapper">
 	    		
 	<header>
-	    <?php if (is_front_page()) { ?>
-	        <h1><a href="<?php bloginfo('home'); ?>/"><?php bloginfo('name'); ?></a></h1>
-    		<h2><?php bloginfo('description'); ?></h2>
-	    <?php } else { ?>
-	        <h2><a href="<?php bloginfo('home'); ?>/"><?php bloginfo('name'); ?></a></h2>
-    		<h3><?php bloginfo('description'); ?></h3>
-	    <?php } ?>
+	    <a class="logo" href="<?php bloginfo('home'); ?>/"><?php bloginfo('name'); ?></a>
 		<nav>
 			<ul>
 				<?php wp_list_pages('title_li=' ); ?>
 			</ul>
 		</nav>
 	</header>
-	

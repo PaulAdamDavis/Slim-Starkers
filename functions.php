@@ -41,3 +41,14 @@
                 $pagination['add_args'] = array('s' => get_query_var('s'));
         echo paginate_links($pagination);
     }
+    
+    // If page is publiched
+    // http://app.kodery.com/s/35
+    function is_published($id) {
+        $page_data = get_page($id);
+        if($page_data->post_status == 'publish') :
+            return true;
+        else :
+            return false;
+        endif;
+    }
