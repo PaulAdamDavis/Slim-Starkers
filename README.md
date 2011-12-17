@@ -1,5 +1,5 @@
-Project run by Paul Adam Davis
-Contact me at pauldamdavis at gmail dot com
+Project run by Paul Adam Davis<br>
+Contact me at pauldamdavis at gmail dot com<br>
 Started 26-September-2010
 
 # Development Notes
