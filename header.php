@@ -4,6 +4,7 @@
 
     <!-- Meta Tags & Browser Stuff -->
     <meta charset="<?php bloginfo('charset'); ?>" />
+	<meta name="viewport" content="user-scalable=yes, width=device-width" />
     <link rel="pingback" href="<?php bloginfo('pingback_url'); ?>" />
     <link rel="shortcut icon" href="<?php bloginfo('template_url'); ?>/favicon.ico" />
     <title><?php wp_title('&laquo;', true, 'right'); ?> <?php bloginfo('name'); ?></title>
