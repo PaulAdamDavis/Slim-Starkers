@@ -17,7 +17,6 @@
     <?php wp_head(); ?>
 
     <!-- CSS -->
-    <link rel="stylesheet" href="<?php bloginfo('stylesheet_url'); ?>" media="screen" />
     <link rel="stylesheet/less" href="<?php bloginfo('template_url'); ?>/css/less.less" type="text/css" />
     <script src="<?php bloginfo('template_url'); ?>/js/less.min.js"></script>
     
