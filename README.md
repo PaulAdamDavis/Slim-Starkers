@@ -9,7 +9,4 @@ I figured most sites will be centred, so the whole theme is wrapped in a .wrappe
 
 ## Todo List
 
-* Make this responsive
 * Add in PHP parser for LESS (as an option)
-* Update all libraries
-* Incorporate my own LESS library
