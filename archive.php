@@ -14,7 +14,7 @@
     	<?php } elseif (is_year()) { ?>
     	    <h1>Archive for <?php the_time('Y'); ?></h1>
     	<?php } elseif (is_author()) { ?>
-    	    <h1>Author Archive</h2>
+    	    <h1>Author Archive</h1>
     	<?php } elseif (isset($_GET['paged']) && !empty($_GET['paged'])) { ?>
     	    <h1>Blog Archives</h1>
     	<?php } ?>

@@ -42,7 +42,7 @@
         echo paginate_links($pagination);
     }
     
-    // If page is publiched
+    // If page is published
     // http://app.kodery.com/s/35
     function is_published($id) {
         $page_data = get_page($id);
