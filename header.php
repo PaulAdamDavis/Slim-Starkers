@@ -19,7 +19,7 @@
 
     <!-- CSS -->
     <link rel="stylesheet/less" href="<?php bloginfo('template_url'); ?>/css/less.less" type="text/css" />
-    <script src="<?php bloginfo('template_url'); ?>/js/less-1.6.1.min.js"></script>
+    <script src="<?php bloginfo('template_url'); ?>/js/less-1.2.1.min.js"></script>
     
 </head>
 <body <?php body_class(); ?>>
