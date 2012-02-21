@@ -60,7 +60,7 @@
     add_theme_support('menus');
 
     // Add featured image to feeds
-    // THIS INCLUDES THE THUMBNAIL IN OUR RSS FEED
+    // http://app.kodery.com/s/1314
     function insertThumbnailRSS($content) {
         global $post;
         if ( has_post_thumbnail( $post->ID ) ){
