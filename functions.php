@@ -1,5 +1,9 @@
 <?php
 
+    // Settings page
+    require_once "settings.php";
+
+
     // If page needs pagination nav, return true
     function show_posts_nav() {
     	global $wp_query;
