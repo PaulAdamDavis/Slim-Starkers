@@ -17,7 +17,7 @@
     <!-- The mountain of stuff WP puts in -->
     <?php wp_head(); ?>
 
-    <!-- CSS  -- Remove the 1st script tag to hide errors -->
+    <!-- CSS  - Remove the 1st script tag to hide errors -->
     <link rel="stylesheet/less" href="<?php bloginfo('template_url'); ?>/css/less.less" type="text/css" />
     <script type="text/javascript">less = { env: 'development' };</script>
     <script src="<?php bloginfo('template_url'); ?>/js/less-1.2.2.min.js"></script>

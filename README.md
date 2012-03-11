@@ -1,12 +1,3 @@
-Project run by Paul Adam Davis<br>
-Contact me at pauldamdavis at gmail dot com<br>
-Started 26-September-2010
+# Slim Starkers
 
-# Development Notes
-
-It's centred.
-I figured most sites will be centred, so the whole theme is wrapped in a .wrapper div in header.php and footer.php
-
-## Todo List
-
-* Add in PHP parser for LESS (as an option)
+The whole idea of this theme is to give you the most minimal starting point possible. So this readme will be like that too.

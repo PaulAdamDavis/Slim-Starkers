@@ -1,6 +1,10 @@
 @import "lesslib.less";
 .reset;
 
+/*****
+	VARS
+*****/
+@main: #cc0033;
 
 /*****
 	LAYOUT
@@ -13,6 +17,7 @@
 
 /*****
 	WORDPRESS STYLES
+	Used for the main content area, the_content()
 *****/
 .alignleft {
 	float: left;
@@ -30,15 +35,20 @@
 /*****
 	GENERAL STYLING
 *****/
-a:link, a:visited {
-	color: #00f;
+a {
+	&:link {
+		color: @main;
+	}
+	&:visited {
+		color: darken(@main, 10);
+	}
+	&:hover, &:active, &:focus {
+		color: darken(@main, 20);
+	}
 }
-a:active, a:hover, a:focus {
-	color: #090;
-}
-em, i {
+em, i, .italic {
 	font-style: italic;
 }
-strong, b {
+strong, b, .bold {
 	font-weight: bold;
 }
