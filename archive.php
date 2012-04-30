@@ -1,8 +1,10 @@
 <?php get_header(); ?>
 
-	<?php if (have_posts()) : ?>
+	<?php if (have_posts()) : 
+		// AO: Calling the post to make the date work
+		the_post();
+	?>
 
-    	<?php $post = $posts[0]; // Hack. Set $post so that the_date() works. ?>
     	<?php if (is_category()) { ?>
     	    <h1>Archive for the &#8216;<?php single_cat_title(); ?>&#8217; Category</h1>
     	<?php } elseif( is_tag() ) { ?>
@@ -18,6 +20,10 @@
     	<?php } elseif (isset($_GET['paged']) && !empty($_GET['paged'])) { ?>
     	    <h1>Blog Archives</h1>
     	<?php } ?>
+
+		<?php 
+		// AO: Calling rewind to go back to the first post as we called it above to get the date to work
+		rewind_posts(); ?>
 
 		<?php while (have_posts()) : the_post(); ?>
 			<article <?php post_class() ?>>
