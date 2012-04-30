@@ -20,7 +20,7 @@
     <!-- CSS  - Remove the 1st script tag to hide errors -->
     <link rel="stylesheet/less" href="<?php bloginfo('template_url'); ?>/css/less.less" type="text/css" />
     <script type="text/javascript">less = { env: 'development' };</script>
-    <script src="<?php bloginfo('template_url'); ?>/js/less-1.2.2.min.js"></script>
+    <script src="<?php bloginfo('template_url'); ?>/js/less-1.3.min.js"></script>
 
 	<?php $slim_ga_tracking_code = get_option('slim_ga_tracking_code'); if (slim_ga_tracking_code) : ?>
 	<!-- GOOGLE ANALYTICS -->
