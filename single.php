@@ -8,7 +8,7 @@
 		        <a href="<?php the_permalink() ?>">
 		            <?php
                 	    $src = wp_get_attachment_image_src(get_post_thumbnail_id($post->ID), 'medium', false, '' );
-                        echo '<img style="top: 0px; right: 0px;" class="postThumb" src="'. $src[0] .'" />';
+                        echo '<img class="postThumb" src="'. $src[0] .'" />';
                     ?>
                 </a>
             <?php } ?>

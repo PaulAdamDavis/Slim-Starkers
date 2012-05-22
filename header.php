@@ -22,7 +22,7 @@
     <script type="text/javascript">less = { env: 'development' };</script>
     <script src="<?php bloginfo('template_url'); ?>/js/less-1.3.min.js"></script>
 
-	<?php $slim_ga_tracking_code = get_option('slim_ga_tracking_code'); if (slim_ga_tracking_code) : ?>
+	<?php $slim_ga_tracking_code = get_option('slim_ga_tracking_code'); if ($slim_ga_tracking_code) : ?>
 	<!-- GOOGLE ANALYTICS -->
 	<script type="text/javascript">
 		var _gaq = _gaq || [];
