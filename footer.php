@@ -5,7 +5,6 @@
 	</div><!-- end .wrapper -->
 		
 	<!-- JavaScript -->
-	<!-- <script src="http://code.jquery.com/jquery-1.7.1.min.js"></script> -->
 	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
 	<script>window.jQuery || document.write('<script src="<?php bloginfo('template_url'); ?>/js/jquery-1.7.2.min.js"><\/script>')</script>
 	<script src="<?php bloginfo('template_url'); ?>/js/scripts.js"></script>

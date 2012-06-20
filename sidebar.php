@@ -1,4 +1,10 @@
 <aside>
+
+	<h3>Search</h3>
+	<form action="/" method="get">
+		<input type="search" name="s" placeholder="Search" />
+		<button type="submit">Search</button>
+	</form>
 	
 	<h3>Archives</h3>
 	<ul>
