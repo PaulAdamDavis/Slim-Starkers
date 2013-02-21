@@ -115,6 +115,30 @@
                 $pagination['add_args'] = array('s' => get_query_var('s'));
         echo paginate_links($pagination);
     }
+    
+    
+    /*****
+        Menu highlighing fix
+        ---
+        Means if you have the blog page as a subpage and added to wp_nav_menu, single/archive pages will highlight correctly
+    *****/
+    add_filter('nav_menu_css_class', 'add_parent_url_menu_class', 10, 2);
+    function add_parent_url_menu_class($classes = array(), $item = false) {
+        $current_url = current_url();
+        $homepage_url = trailingslashit(get_bloginfo('url'));
+        if (is_404() or $item->url == $homepage_url) return $classes;
+        if (strstr($current_url, $item->url)) {
+            $classes[] = 'current_page_item';
+        }
+        return $classes;
+    }
+    function current_url() {
+        $url = ('on' == $_SERVER['HTTPS']) ? 'https://' : 'http://';
+        $url .= $_SERVER['SERVER_NAME'];
+        $url .= ('80' == $_SERVER['SERVER_PORT']) ? '' : ':' . $_SERVER['SERVER_PORT'];
+        $url .= $_SERVER['REQUEST_URI'];
+        return trailingslashit( $url );
+    }
 
 
     /*****
