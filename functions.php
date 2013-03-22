@@ -31,8 +31,8 @@
 
     // Add first & last classes to wp_nav_menu menus
     function add_first_and_last($output) {
-        $output = preg_replace('/class="menu-item/', 'class="first-menu-item menu-item', $output, 1);
-        $output = substr_replace($output, 'class="last-menu-item menu-item', strripos($output, 'class="menu-item'), strlen('class="menu-item'));
+        $output = preg_replace('/class="menu-item/', 'class="first-menu-item menu-item ', $output, 1);
+        $output = substr_replace($output, 'class="last-menu-item menu-item ', strripos($output, 'class="menu-item'), strlen('class="menu-item'));
         return $output;
     }
     add_filter('wp_nav_menu', 'add_first_and_last');
@@ -146,7 +146,9 @@
     *****/
     // add_filter('show_admin_bar', '__return_false');   
 
-    // Change number of posts in search results
+    /*****
+        Change number of posts in search results
+    *****/
     // function change_wp_search_size($query) {
     //     if ($query->is_search) :
     //         $query->query_vars['posts_per_page'] = 1000;
