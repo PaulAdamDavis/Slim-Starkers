@@ -42,7 +42,7 @@
 	<div class="wrapper">
 	    		
 	<header>
-	    <a class="logo" href="<?php bloginfo('home'); ?>/"><?php bloginfo('name'); ?></a>
+	    <a class="logo" href="<?php bloginfo('url'); ?>/"><?php bloginfo('name'); ?></a>
 		<nav>
 			<ul>
 				<?php wp_nav_menu(array(
