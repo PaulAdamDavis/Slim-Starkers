@@ -1,8 +1,8 @@
 <?php
 
     // Show all errors, without needing to go back to wp-config.php
-    error_reporting(E_ALL);
-    ini_set('display_errors', '1');
+    // error_reporting(E_ALL);
+    // ini_set('display_errors', '1');
 
 
     // Settings page
@@ -27,7 +27,7 @@
         return '&nbsp;<a href="'. get_permalink($post->ID) . '">' . 'Read more' . '</a>';
     }
     add_filter('excerpt_more', 'new_excerpt_more');
-    
+
 
     // Add first & last classes to wp_nav_menu menus
     function add_first_and_last($output) {
@@ -36,7 +36,7 @@
         return $output;
     }
     add_filter('wp_nav_menu', 'add_first_and_last');
-     
+
 
     // Add featured image to feeds
     // http://app.kodery.com/s/1314
@@ -91,7 +91,7 @@
 
 
     // Pagination, nativly. (Only works on pretty URLs)
-    $wp_rewrite->rules = $feed_rules + $wp_rewrite->rules;    
+    $wp_rewrite->rules = $feed_rules + $wp_rewrite->rules;
     $rules = $wp_rewrite->permalink_structure;
     function my_paginate_links() {
         global $wp_rewrite, $wp_query;
@@ -115,8 +115,8 @@
                 $pagination['add_args'] = array('s' => get_query_var('s'));
         echo paginate_links($pagination);
     }
-    
-    
+
+
     /*****
         Menu highlighing fix
         ---
@@ -142,9 +142,30 @@
 
 
     /*****
+        Has children action
+    *****/
+    function add_menu_parent_class($items) {
+        $parents = array();
+        foreach ($items as $item) {
+            if ($item->menu_item_parent && $item->menu_item_parent > 0) {
+                $parents[] = $item->menu_item_parent;
+            }
+        }
+        foreach ($items as $item) {
+            if (in_array( $item->ID, $parents)) {
+                $item->classes[] = 'has-children';
+            }
+        }
+        return $items;
+    }
+    add_filter('wp_nav_menu_objects', 'add_menu_parent_class');
+
+
+    /*****
         Hide Admin Bar in WP 3.1
     *****/
-    // add_filter('show_admin_bar', '__return_false');   
+    // add_filter('show_admin_bar', '__return_false');
+
 
     /*****
         Change number of posts in search results
@@ -165,15 +186,15 @@
     //      $translated = str_ireplace('Post', 'Article', $translated);  // ireplace is PHP5 only
     //      return $translated;
     // }
-    // add_filter(  'gettext',  'change_post_to_article'  );
-    // add_filter(  'ngettext',  'change_post_to_article'  );
+    // add_filter('gettext', 'change_post_to_article');
+    // add_filter('ngettext', 'change_post_to_article');
 
 
     /*****
         Force maintenance mode to non-admins
     *****/
     // function wpr_maintenace_mode() {
-    //     if ( !current_user_can("edit_themes") || !is_user_logged_in() ) {
+    //     if (!current_user_can("edit_themes") || !is_user_logged_in()) {
     //         die("<h1>Maintenance, please come back soon.</h1>");
     //     }
     // }
@@ -181,25 +202,10 @@
 
 
     /*****
-        Hide yellow update bar in admin
-    *****/
-    // // 2.3 to 2.7
-    // add_action('init', create_function('$a', "remove_action('init', 'wp_version_check');"), 2);
-    // add_filter('pre_option_update_core', create_function('$a', "return null;"));
-    // // 2.8 to 3.0
-    // remove_action('wp_version_check', 'wp_version_check');
-    // remove_action('admin_init', '_maybe_update_core');
-    // add_filter('pre_transient_update_core', create_function('$a', "return null;"));
-    // // 3.0
-    // add_filter('pre_site_transient_update_core', create_function('$a', "return null;"));
-
-
-    /*****
         Show custom warning in admin pages, useful for warning it's a dev site
     *****/
     // add_action('admin_notices','my_custom_warning');
     // function my_custom_warning() {
-    //     // 'error' is red, 'updated' is yellow
+    //     // 'error' class is red, 'updated' class is yellow
     //     echo '<div class="error"><p>This is a development site. Any changes to data may be <b>lost permanently</b>.</p></div>';
     // }
-

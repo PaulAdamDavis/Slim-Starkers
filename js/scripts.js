@@ -9,9 +9,25 @@ $(function(){
 
     // Make the HTML5 Placeholder option work in older browsers
     $('input, textarea').placeholder();
-	
-});
 
-$(window).bind("load",function(){
+    /*****
+        Class...
+    *****/
+    var app = {};
+
+    // A sample of how I structure my JS
+    // app.something = {
+    //      show: function(args){
+    //          var elem = args.elem,
+    //          message: args.message
+    //          elem.show();
+    //      console.log(message);
+    //      }
+    // };
+
+    // app.something.show({
+    //  elem: $("#something"),
+    //  message: "Some text"
+    // });
 
 });

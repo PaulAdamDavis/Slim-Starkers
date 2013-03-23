@@ -1,34 +1,37 @@
 <?php
 
-    // create custom plugin settings menu
-    add_action('admin_menu', 'slim_create_menu');
+    add_action('admin_menu', 'extra_settings_menu');
 
-    function slim_create_menu() {
-        //create new top-level menu
-        add_menu_page('Slim Settings', 'Slim Settings', 'administrator', __FILE__, 'slim_settings_page');
-        //call register settings function
-        add_action( 'admin_init', 'register_mysettings' );
+    function extra_settings_menu() {
+        add_menu_page('Extra Settings', 'Extra Settings', 'administrator', __FILE__, 'extra_settings_html');
+        add_action('admin_init', 'register_mysettings');
     }
 
     function register_mysettings() {
-        //register our settings
-        register_setting( 'slim_settings_group', 'slim_ga_tracking_code' );
+        register_setting('extra_settings_group', 'ga_tracking_code');
     }
 
-    function slim_settings_page() { ?>
+    function extra_settings_html() { ?>
         <div class="wrap">
-            <h2>Slim Settings</h2>
+
+            <h2>Extra Settings</h2>
+
             <form method="post" action="options.php">
-                <?php settings_fields('slim_settings_group'); ?>
+
+                <?php settings_fields('extra_settings_group'); ?>
+
                 <table class="form-table">
                     <tr valign="top">
-                        <th scope="row">Google Tracking Code</th>
-                        <td><input name="slim_ga_tracking_code" value="<?php echo get_option('slim_ga_tracking_code'); ?>" /></td>
+                        <th>Google Tracking UA Code</th>
+                        <td><input type="text" name="ga_tracking_code" value="<?php echo get_option('ga_tracking_code'); ?>" placeholder="UA-1234567-89" /></td>
                     </tr>
                 </table>
+
                 <p class="submit">
-                    <input type="submit" class="button-primary" value="<?php _e('Save Changes') ?>" />
+                    <input type="submit" class="button-primary" value="Save Changes" />
                 </p>
+
             </form>
+
         </div>
     <?php }
