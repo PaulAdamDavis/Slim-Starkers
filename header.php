@@ -18,7 +18,7 @@
     <?php wp_head(); ?>
 
     <!-- CSS  - Remove the 1st script tag to hide errors -->
-    <link rel="stylesheet/less" href="<?php bloginfo('template_url'); ?>/css/less.less" type="text/css" />
+    <link rel="stylesheet/less" href="<?php bloginfo('template_url'); ?>/styles/less/less.less" type="text/css" />
     <script type="text/javascript">less = { env: 'development' };</script>
     <script src="<?php bloginfo('template_url'); ?>/js/less-1.3.min.js"></script>
 
