@@ -1,69 +1,44 @@
-<?php
+<div id="comments">
 
-    // Do not delete these lines
-    if (!empty($_SERVER['SCRIPT_FILENAME']) && 'comments.php' == basename($_SERVER['SCRIPT_FILENAME'])) die ('Please do not load this page directly. Thanks!');
+    <?php if (have_comments()) : ?>
+        <h2 id="comments-title">
+            <?php
+                if (get_comments_number() == 1) :
+                    echo 'Just one comment';
+                else :
+                    echo convert_number_to_words(get_comments_number(), 'capitalize') . ' comments';
+                endif;
+            ?>
+        </h2>
 
-    if (post_password_required()) {
-        echo '<p class="alert">This post is password protected. Enter the password to view comments.</p>';
-        return;
-    }
-
-?>
-
-<?php if (have_comments()) : ?>
-    <h3 id="comments"><?php comments_number('No Responses', 'One Response', '% Responses' );?> to &#8220;<?php the_title(); ?>&#8221;</h3>  <!-- View functions.php for comment markup -->
         <ol id="commentList">
-    <?php foreach ($comments as $comment) : ?>
-        <li class="comment-item <?php if (1 == $comment->user_id) $oddcomment = "authcomment"; echo $oddcomment; ?>">
-            <div class="left">
-                <a class="comment-item-gravatar" href="<?php comment_author_url(); ?>"><?php echo get_avatar($comment, 80); ?></a>
-            </div>
-            <div class="right">
-                <span class="author"><?php comment_author_link() ?> - <?php comment_date('F jS, Y') ?> at <?php comment_time() ?></span>
-                <?php if ($comment->comment_approved == '0') : ?>
-                <p>Your comment is awaiting moderation.</p>
-                <?php endif; ?>
-                <?php comment_text() ?>
-            </div>
-        </li>
-    <?php
-        endforeach; // end for each comment
-    ?>
+            <?php wp_list_comments(array('callback' => 'nested_comment')); ?>
         </ol>
-    <?php previous_comments_link() ?> <?php next_comments_link() ?>
-<?php else : // this is displayed if there are no comments so far ?>
-    <?php if (comments_open()) : ?>
-        <!-- If comments are open, but there are no comments. -->
-    <?php else : // comments are closed ?>
-        <!-- If comments are closed. -->
-        <p class="nocomments">Comments are closed.</p>
+
+    <?php
+        elseif (!comments_open() && !is_page() && post_type_supports(get_post_type(), 'comments')) :
+    ?>
+        <p class="nocomments">Sorry, but comments are now closed.</p>
     <?php endif; ?>
-<?php endif; ?>
 
+    <?php
+        $defaults = array(
+            'fields' => apply_filters( 'comment_form_default_fields', array(
+                'author' => '<input placeholder="Name (required)" id="author" name="author" type="text" value="' .  esc_attr( $commenter['comment_author'] ) . '" size="30" tabindex="1" />',
+                'email'  => '<input placeholder="Mail (will not be published) (required)" id="email" name="email" type="text" value="' . esc_attr(  $commenter['comment_author_email'] ) . '" size="30" tabindex="2" />',
+                'url'    => '<input placeholder="Website" id="url" name="url" type="text" value="' . esc_attr( $commenter['comment_author_url'] ) . '" size="30" tabindex="3" />'
+            )),
+            'comment_field' => '<textarea placeholder="Your message" id="comment" name="comment" cols="45" rows="8" tabindex="4" aria-required="true"></textarea>',
+            'must_log_in' => '<p class="must-log-in">' . sprintf(__('You must be <a href="%s">logged in</a> to post a comment.'), wp_login_url(apply_filters('the_permalink', get_permalink(get_the_id())))) . '</p>',
+            'logged_in_as' => '<p class="logged-in-as">' . sprintf(__('Logged in as <a href="%s">%s</a>. <a title="Log out of this account" href="%s">Log out?</a></p>'), admin_url('profile.php'), $user_identity, wp_logout_url(apply_filters('the_permalink', get_permalink(get_the_id())))),
+            'comment_notes_before' => false,
+            'comment_notes_after' => false,
+            'title_reply' => 'Leave a Reply',
+            'title_reply_to' => __('Leave a Reply to %s'),
+            'cancel_reply_link' => __('Cancel reply'),
+            'label_submit' => __('Post Comment'),
+        );
+        comment_form($defaults);
+    ?>
 
-<?php if (comments_open()) : ?>
-    <h3 id="respond"><?php comment_form_title( 'Leave a Reply', 'Leave a Reply to %s' ); ?></h3>
-    <p class="cancel-comment-reply"><?php cancel_comment_reply_link(); ?></p>
-    <?php if (get_option('comment_registration') && !is_user_logged_in()) : ?>
-        <p>You must be <a href="<?php echo wp_login_url(get_permalink()); ?>">logged in</a> to post a comment.</p>
-    <?php else : ?>
-        <form action="<?php echo get_option('siteurl'); ?>/wp-comments-post.php" method="post" id="commentform">
-            <?php if (is_user_logged_in()) : ?>
-                <p>Logged in as <a href="<?php echo get_option('siteurl'); ?>/wp-admin/profile.php"><?php echo $user_identity; ?></a>. <a href="<?php echo wp_logout_url(get_permalink()); ?>" title="Log out of this account">Log out &raquo;</a></p>
-            <?php else : ?>
-                <label for="author">Name (required)</label>
-                <input type="text" name="author" id="author" value="<?php echo esc_attr($comment_author); ?>" size="22" required />
-
-                <label for="email">Mail (will not be published) (required)</label>
-                <input type="email" name="email" id="email" value="<?php echo esc_attr($comment_author_email); ?>" size="22" required />
-
-                <label for="url">Website</label>
-                <input type="url" name="url" id="url" value="<?php echo esc_attr($comment_author_url); ?>" size="22" />
-            <?php endif; ?>
-            <textarea name="comment" id="comment" cols="40" rows="10" required></textarea>
-            <button type="submit" name="submit" id="send">Submit Comment</button>
-            <?php comment_id_fields(); ?>
-            <?php do_action('comment_form', $post->ID); ?>
-        </form>
-    <?php endif; ?>
-<?php endif; ?>
+</div><!-- #comments -->

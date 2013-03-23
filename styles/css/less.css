@@ -1,0 +1,293 @@
+/*****
+	LAYOUT
+*****/
+.clearfix {
+  zoom: 1;
+}
+.clearfix:after {
+  display: block;
+  visibility: hidden;
+  height: 0;
+  clear: both;
+  content: ".";
+}
+/*****
+	FORM
+*****/
+/*****
+	SHADOWS
+*****/
+/*****
+	ROUNDED CORNERS
+*****/
+/*****
+	GRADIENTS
+*****/
+/*****
+	CSS3 TRANSFORMS
+*****/
+/****
+	COLUMNS
+*****/
+/*****
+	MASKS
+*****/
+/*****
+	MISC
+*****/
+/*****
+	OPACITY
+*****/
+/*****
+	IE HACKS
+*****/
+html,
+body,
+div,
+span,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+abbr,
+address,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+samp,
+small,
+strong,
+sub,
+sup,
+var,
+b,
+i,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  font-size: 100%;
+  vertical-align: baseline;
+  background: transparent;
+}
+body {
+  line-height: 1;
+}
+article,
+aside,
+canvas,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section,
+summary {
+  display: block;
+}
+nav ul {
+  list-style: none;
+}
+blockquote,
+q {
+  quotes: none;
+}
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+  content: '';
+  content: none;
+}
+a {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  vertical-align: baseline;
+  background: transparent;
+}
+ins {
+  background-color: #ff9;
+  color: #000;
+  text-decoration: none;
+}
+mark {
+  background-color: #ff9;
+  color: #000;
+  font-style: italic;
+  font-weight: bold;
+}
+del {
+  text-decoration: line-through;
+}
+abbr[title],
+dfn[title] {
+  border-bottom: 1px dotted #000;
+  cursor: help;
+}
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+hr {
+  display: block;
+  height: 1px;
+  border: 0;
+  border-top: 1px solid #cccccc;
+  margin: 1em 0;
+  padding: 0;
+}
+input,
+select {
+  vertical-align: middle;
+}
+* {
+  outline: none;
+}
+.clear {
+  clear: both;
+}
+/*****
+	VARS
+*****/
+/*****
+	LAYOUT
+*****/
+.wrapper {
+  max-width: 960px;
+  margin: 0 auto;
+}
+/*****
+	WORDPRESS STYLES
+	Used for the main content area, the_content()
+*****/
+.alignleft {
+  float: left;
+}
+.alignright {
+  float: right;
+}
+.aligncenter {
+  display: block;
+  margin: 0 auto;
+  clear: both;
+}
+.hentry p,
+.hentry ul,
+.hentry ol,
+.hentry img,
+.hentry blockquote {
+  margin-bottom: 1em;
+}
+.hentry blockquote {
+  margin-left: 2em;
+  background: #eee;
+  padding: 0.3em 0.5em;
+  border: 1px solid #ccc;
+}
+.hentry blockquote p {
+  margin: 0;
+}
+/*****
+	GENERAL STYLING
+*****/
+a:link {
+  color: #cc0033;
+}
+a:visited {
+  color: #990026;
+}
+a:hover,
+a:active,
+a:focus {
+  color: #660019;
+}
+em,
+i,
+.italic {
+  font-style: italic;
+}
+strong,
+b,
+.bold {
+  font-weight: bold;
+}
+/*****
+	OPTIONAL TYPE
+*****/
+body {
+  font-family: Arial, sans-serif;
+  color: #444;
+  font-size: 100%;
+  line-height: 1.5;
+}
+h1 {
+  font-size: 1.7em;
+}
+h2 {
+  font-size: 1.6em;
+}
+h3 {
+  font-size: 1.5em;
+}
+h4 {
+  font-size: 1.4em;
+}
+h5 {
+  font-size: 1.3em;
+}
+h6 {
+  font-size: 1.2em;
+}

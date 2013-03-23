@@ -1,7 +1,7 @@
 <?php get_header(); ?>
 
     <?php if (have_posts()) : ?>
-        <h1>Search Results</h1>
+        <h1>Search Results for &#8216;<?php echo get_search_query(); ?>&#8217;</h1>
         <?php while (have_posts()) : the_post(); ?>
             <article <?php post_class() ?>>
                 <h1 id="post-<?php the_ID(); ?>"><a href="<?php the_permalink() ?>" rel="bookmark" title="Permanent Link to <?php the_title_attribute(); ?>"><?php the_title(); ?></a></h1>

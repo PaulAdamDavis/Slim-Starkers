@@ -14,6 +14,10 @@
     add_theme_support('menus');
 
 
+    // Remove generator meta tag from head
+    remove_action('wp_head', 'wp_generator');
+
+
     // If page needs pagination nav, return true
     function show_posts_nav() {
     	global $wp_query;
@@ -52,14 +56,14 @@
 
 
     // Make search prefix pretty
-    function fb_change_search_url_rewrite() {
+    function change_search_url_rewrite() {
         if (is_search() && ! empty($_GET['s'])) {
             wp_redirect(home_url("/search/") . urlencode(get_query_var('s')));
             exit();
         }
     }
     if (get_option('permalink_structure') !== '') {
-        add_action('template_redirect', 'fb_change_search_url_rewrite');
+        add_action('template_redirect', 'change_search_url_rewrite');
     }
 
 
@@ -162,6 +166,190 @@
 
 
     /*****
+        Nested Comment
+    *****/
+    function nested_comment($comment, $args, $depth) {
+        $GLOBALS['comment'] = $comment;
+        switch ($comment->comment_type) :
+            case 'pingback' :
+            case 'trackback' :
+        ?>
+        <li class="post pingback">
+            <p>Pingback: <?php comment_author_link(); ?><?php edit_comment_link('Edit', '<span class="edit-link">', '</span>'); ?></p>
+        <?php
+                break;
+            default :
+        ?>
+
+        <?php
+            /*$avatar_size = 80;
+            if ($depth === 1) $avatar_size = 80;
+            if ($depth === 2) $avatar_size = 60;
+            if ($depth === 3) $avatar_size = 50;
+            if ($depth === 4) $avatar_size = 40;
+            */
+        ?>
+
+        <li class="comment-item depth-<?php echo $depth; ?>" id="li-comment-<?php comment_ID(); ?>">
+            <article id="comment-<?php comment_ID(); ?>" class="comment">
+
+                <div class="left">
+                    <?php comment_author_link() ?> <a href="#comment-<?php comment_id(); ?>" class="comment_hash">#</a>
+                    <span><?php comment_date('F jS, Y') ?> at <?php comment_time() ?></span>
+                    <?php echo get_avatar($comment, 30); ?>
+                </div>
+
+                <div class="right">
+                    <?php if ($comment->comment_approved == '0') : ?>
+                        <span class="red">Your comment is awaiting moderation, <?php comment_author(); ?>.</span><br>
+                    <?php endif; ?>
+                    <?php comment_text() ?>
+                    <div class="reply">
+                        <?php comment_reply_link(
+                            array_merge(
+                                $args,
+                                array(
+                                    'reply_text' => 'Reply',
+                                    'depth' => $depth,
+                                    'max_depth' => $args['max_depth']
+                                )
+                            )
+                        ); ?>
+                    </div><!-- .reply -->
+                </div>
+
+                <div class="clear"></div>
+
+            </article><!-- #comment-<?php comment_id(); ?> -->
+
+        <?php
+                break;
+        endswitch;
+    } // end nested_comment()
+
+
+    /*****
+        Convert int to words
+    *****/
+    function convert_number_to_words($number, $alt) {
+
+        $alt = ($alt) ? $alt : false;
+
+        $hyphen      = '-';
+        $conjunction = ' and ';
+        $separator   = ', ';
+        $negative    = 'negative ';
+        $decimal     = ' point ';
+        $dictionary  = array(
+            0                   => 'zero',
+            1                   => 'one',
+            2                   => 'two',
+            3                   => 'three',
+            4                   => 'four',
+            5                   => 'five',
+            6                   => 'six',
+            7                   => 'seven',
+            8                   => 'eight',
+            9                   => 'nine',
+            10                  => 'ten',
+            11                  => 'eleven',
+            12                  => 'twelve',
+            13                  => 'thirteen',
+            14                  => 'fourteen',
+            15                  => 'fifteen',
+            16                  => 'sixteen',
+            17                  => 'seventeen',
+            18                  => 'eighteen',
+            19                  => 'nineteen',
+            20                  => 'twenty',
+            30                  => 'thirty',
+            40                  => 'fourty',
+            50                  => 'fifty',
+            60                  => 'sixty',
+            70                  => 'seventy',
+            80                  => 'eighty',
+            90                  => 'ninety',
+            100                 => 'hundred',
+            1000                => 'thousand',
+            1000000             => 'million',
+            1000000000          => 'billion',
+            1000000000000       => 'trillion',
+            1000000000000000    => 'quadrillion',
+            1000000000000000000 => 'quintillion'
+        );
+
+        if (!is_numeric($number)) {
+            return false;
+        }
+
+        if (($number >= 0 && (int) $number < 0) || (int) $number < 0 - PHP_INT_MAX) {
+            trigger_error(
+                'convert_number_to_words only accepts numbers between -' . PHP_INT_MAX . ' and ' . PHP_INT_MAX,
+                E_USER_WARNING
+            );
+            return false;
+        }
+
+        if ($number < 0) {
+            return $negative . convert_number_to_words(abs($number));
+        }
+
+        $string = $fraction = null;
+
+        if (strpos($number, '.') !== false) {
+            list($number, $fraction) = explode('.', $number);
+        }
+
+        switch (true) {
+            case $number < 21:
+                $string = $dictionary[$number];
+                break;
+            case $number < 100:
+                $tens   = ((int) ($number / 10)) * 10;
+                $units  = $number % 10;
+                $string = $dictionary[$tens];
+                if ($units) {
+                    $string .= $hyphen . $dictionary[$units];
+                }
+                break;
+            case $number < 1000:
+                $hundreds  = $number / 100;
+                $remainder = $number % 100;
+                $string = $dictionary[$hundreds] . ' ' . $dictionary[100];
+                if ($remainder) {
+                    $string .= $conjunction . convert_number_to_words($remainder);
+                }
+                break;
+            default:
+                $baseUnit = pow(1000, floor(log($number, 1000)));
+                $numBaseUnits = (int) ($number / $baseUnit);
+                $remainder = $number % $baseUnit;
+                $string = convert_number_to_words($numBaseUnits) . ' ' . $dictionary[$baseUnit];
+                if ($remainder) {
+                    $string .= $remainder < 100 ? $conjunction : $separator;
+                    $string .= convert_number_to_words($remainder);
+                }
+                break;
+        }
+
+        if (null !== $fraction && is_numeric($fraction)) {
+            $string .= $decimal;
+            $words = array();
+            foreach (str_split((string) $fraction) as $number) {
+                $words[] = $dictionary[$number];
+            }
+            $string .= implode(' ', $words);
+        }
+
+        if ($alt == 'capitalize') {
+            $string = ucwords($string);
+        }
+
+        return $string;
+    }
+
+
+    /*****
         Hide Admin Bar in WP 3.1
     *****/
     // add_filter('show_admin_bar', '__return_false');
@@ -180,7 +368,20 @@
 
 
     /*****
-        Rename 'Posts' to 'Articles'
+        Change number of posts in archive results
+    *****/
+    // function change_wp_archive_size($query) {
+    //     if ($query->is_archive) : // Make sure it is a search page
+    //         $query->query_vars['posts_per_page'] = 1000;
+    //     endif;
+    //     return $query;
+    // }
+    // add_filter('pre_get_posts', 'change_wp_archive_size');
+
+
+
+    /*****
+        Rename 'Post' to 'Article'
     *****/
     // function change_post_to_article($translated) {
     //      $translated = str_ireplace('Post', 'Article', $translated);  // ireplace is PHP5 only

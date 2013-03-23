@@ -3,6 +3,7 @@
 <head>
 
     <!-- Meta Tags & Browser Stuff -->
+    <meta name="description" content="<?php bloginfo("description"); ?>" />
     <meta charset="<?php bloginfo('charset'); ?>" />
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <link rel="pingback" href="<?php bloginfo('pingback_url'); ?>" />
@@ -17,8 +18,8 @@
     <!-- The mountain of stuff WP puts in -->
     <?php wp_head(); ?>
 
-    <!-- CSS  - Remove the 1st script tag to hide errors -->
-    <link rel="stylesheet" href="<?php bloginfo('template_url'); ?>/styles/css/less.css" type="text/css" />
+    <!-- CSS -->
+    <!-- <link rel="stylesheet" href="<?php bloginfo('template_url'); ?>/styles/css/less.css" /> -->
 
     <?php $ga_tracking_code = get_option('ga_tracking_code'); if ($ga_tracking_code) : ?>
     <!-- GOOGLE ANALYTICS -->
@@ -33,6 +34,12 @@
         })();
     </script>
     <?php endif; ?>
+
+    <?php
+        if (is_singular() && get_option('thread_comments')) :
+            wp_enqueue_script('comment-reply');
+        endif;
+    ?>
 
 </head>
 <body <?php body_class(); ?>>

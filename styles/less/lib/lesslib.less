@@ -1,21 +1,4 @@
 /*****
-	TODO
-	
-	* Add browser compabilities to each mixin
-	* Add more mixins from other libs that I would use
-	* Add button mixin, a port of Maykel Loomans button class for SASS (Lovely buttons)
-	
-*****/
-
-
-/*****
-	MY RESET
-*****/
-.reset {
-	html,body,div,span,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,abbr,address,cite,code,del,dfn,em,img,ins,kbd,q,samp,small,strong,sub,sup,var,b,i,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td,article,aside,canvas,details,figcaption,figure,footer,header,hgroup,menu,nav,section,summary,time,mark,audio,video {margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent;}body {line-height:1;}article,aside,canvas,details,figcaption,figure,footer,header,hgroup,menu,nav,section,summary {display:block;}nav ul {list-style:none;}blockquote,q {quotes:none;}blockquote:before,blockquote:after,q:before,q:after {content:'';content:none;}a {margin:0;padding:0;border:0;font-size:100%;vertical-align:baseline;background:transparent;}ins {background-color:#ff9;color:#000;text-decoration:none;}mark {background-color:#ff9;color:#000;font-style:italic;font-weight:bold;}del {text-decoration: line-through;}abbr[title],dfn[title] {border-bottom:1px dotted #000;cursor:help;}table {border-collapse:collapse;border-spacing:0;}hr {display:block;height:1px;border:0;border-top:1px solid #cccccc;margin:1em 0;padding:0;}input,select {vertical-align:middle;}* {outline: none;} .clear {clear: both;}
-}
-
-/*****
 	LAYOUT
 *****/
 .clearfix {
@@ -46,28 +29,31 @@
 /*****
 	SHADOWS
 *****/
-.box-shadow(@x-axis: 0, @y-axis: 1px, @blur: 2px, @alpha: 0.1) {
-	-webkit-box-shadow: @x-axis @y-axis @blur rgba(0, 0, 0, @alpha);
-	-moz-box-shadow: @x-axis @y-axis @blur rgba(0, 0, 0, @alpha);
-	box-shadow: @x-axis @y-axis @blur rgba(0, 0, 0, @alpha);
-}
-.inner-shadow(@horizontal:0, @vertical:1px, @blur:2px, @alpha: 0.4) {
-	-webkit-box-shadow: inset @horizontal @vertical @blur rgba(0, 0, 0, @alpha);
-	-moz-box-shadow: inset @horizontal @vertical @blur rgba(0, 0, 0, @alpha);
-	box-shadow: inset @horizontal @vertical @blur rgba(0, 0, 0, @alpha);
+.box-shadow(@box-vars: 0px 0px 3px #000) {
+	-webkit-box-shadow: @box-vars;
+	-moz-box-shadow: @box-vars;
+	box-shadow: @box-vars;
 }
 
 
 /*****
 	ROUNDED CORNERS
 *****/
-.border-radius(@brparams: 3px) {
-	-webkit-border-radius: @brparams;
-	-moz-border-radius: @brparams;
-	border-radius: @brparams;
+.rounded(@radius: 2px) {
+	-webkit-border-radius: @radius;
+	-moz-border-radius: @radius;
+	border-radius: @radius;
 	-moz-background-clip: padding;
 	-webkit-background-clip: padding-box;
-	background-clip: padding-box; 
+	background-clip: padding-box;
+}
+.border-radius(@topright: 0, @bottomright: 0, @bottomleft: 0, @topleft: 0) {
+	-webkit-border-radius: @topright @bottomright @bottomleft @topleft;
+	-moz-border-radius: @topright @bottomright @bottomleft @topleft;
+	border-radius: @topright @bottomright @bottomleft @topleft;
+	-moz-background-clip: padding;
+	-webkit-background-clip: padding-box;
+	background-clip: padding-box;
 }
 
 
@@ -130,21 +116,28 @@
 	-ms-transition: all @duration @ease;
 	transition: all @duration @ease;
 }
-.rotation(@deg: 5deg){
+.no-transition() {
+	-webkit-transition: none !important;
+	-moz-transition: none !important;
+	-ms-transition: none !important;
+	-o-transition: none !important;
+	transition: none !important;
+}
+.rotate(@deg:5deg){
 	-webkit-transform: rotate(@deg);
 	-moz-transform: rotate(@deg);
 	-o-transform: rotate(@deg);
 	-ms-transform: rotate(@deg);
 	transform: rotate(@deg);
 }
-.scale(@ratio: 1.5){
+.scale(@ratio:1.5){
 	-webkit-transform:scale(@ratio);
 	-moz-transform:scale(@ratio);
 	-o-transform:scale(@ratio);
 	-ms-transform:scale(@ratio);
 	transform:scale(@ratio);
 }
-.translate(@x: 0, @y: 0) {
+.translate(@x:0, @y:0) {
 	-moz-transform: translate(@x, @y);
 	-webkit-transform: translate(@x, @y);
 	-o-transform: translate(@x, @y);
@@ -160,6 +153,46 @@
 }
 
 
+/****
+	COLUMNS
+*****/
+.column_count(@col_count: 3) {
+	-webkit-column-count: @col_count;
+	-moz-column-count: @col_count;
+	column-count: @col_count;
+}
+.column_gap(@col_gap: 20px) {
+	-webkit-column-gap: @col_gap;
+	-moz-column-gap: @col_gap;
+	column-gap: @col_gap;
+}
+.column_width(@col_width: 100px) {
+	-webkit-column-width: @col_width;
+	-moz-column-width: @col_width;
+	column-width: @col_width;
+}
+.column_rule(@col_rule: 1px solid red) {
+	-moz-column-rule: @col_rule;
+	-webkit-column-rule: @col_rule;
+	column-rule: @col_rule;
+}
+.column_rule_width(@col_rule: 1px) {
+	-moz-column-rule-width: @col_rule;
+	-webkit-column-rule-width: @col_rule;
+	column-rule-width: @col_rule;
+}
+.column_rule_color(@col_rule_color: #f00) {
+	-moz-column-rule-color: @col_rule_color;
+	-webkit-column-rule-color: @col_rule_color;
+	column-rule-color: @col_rule_color;
+}
+.column_span(@col_span: all) {
+	-webkit-column-span: @col_span;
+	-moz-column-span: @col_span;
+	column-span: @col_span;
+}
+
+
 /*****
 	MASKS
 *****/
@@ -168,6 +201,17 @@
 	-o-mask-image: url('@{src}');
 	-moz-mask-image: url('@{src}');
 	mask-image: url('@{src}');
+}
+
+
+/*****
+	MISC
+*****/
+.background-size(@bg_size: 50% 50%) {
+	-webkit-background-size: @bg_size;
+	-o-background-size: @bg_size;
+	-moz-background-size: @bg_size;
+	background-size: @bg_size;
 }
 
 
@@ -190,4 +234,12 @@
 	min-height: @height;
 	height: auto !important;
 	height: @height;
+}
+.rgba_bg(@r,@g,@b,@a) {
+    @colour_string: rgba(@r,@g,@b,@a);
+    @ie: argb(@colour_string);
+    -ms-filter: ~"progid:DXImageTransform.Microsoft.gradient(startColorstr=@{ie},endColorstr=@{ie})";
+    filter: ~"progid:DXImageTransform.Microsoft.gradient(startColorstr=@{ie},endColorstr=@{ie})";
+    zoom: 1;
+    background: @colour_string;
 }
