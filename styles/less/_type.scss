@@ -1,0 +1,49 @@
+/*****
+	GENERAL STYLING
+*****/
+a {
+	&:link {
+		color: $main;
+	}
+	&:visited {
+		color: darken($main, 10);
+	}
+	&:hover, &:active, &:focus {
+		color: darken($main, 20);
+	}
+}
+em, i, .italic {
+	font-style: italic;
+}
+strong, b, .bold {
+	font-weight: bold;
+}
+
+
+/*****
+	OPTIONAL TYPE
+*****/
+body {
+	font-family: Arial, sans-serif;
+	color: #444;
+	font-size: 100%;
+	line-height: 1.5;
+}
+h1 {
+	font-size: 1.7em;
+}
+h2 {
+	font-size: 1.6em;
+}
+h3 {
+	font-size: 1.5em;
+}
+h4 {
+	font-size: 1.4em;
+}
+h5 {
+	font-size: 1.3em;
+}
+h6 {
+	font-size: 1.2em;
+}
