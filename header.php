@@ -19,7 +19,7 @@
     <?php wp_head(); ?>
 
     <!-- CSS -->
-    <!-- <link rel="stylesheet" href="<?php bloginfo('template_url'); ?>/styles/css/less.css" /> -->
+    <!-- <link rel="stylesheet" href="<?php bloginfo('template_url'); ?>/styles/css/sass.css" /> -->
 
     <?php $ga_tracking_code = get_option('ga_tracking_code'); if ($ga_tracking_code) : ?>
     <!-- GOOGLE ANALYTICS -->
