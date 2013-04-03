@@ -3,6 +3,24 @@
     // Show all errors, without needing to go back to wp-config.php
     // error_reporting(E_ALL);
     // ini_set('display_errors', '1');
+    
+    
+    // Dirty pre function with limited height and randomnlt changing border colours
+    function pre($var) {
+        echo '<pre style="background: #fcffb1; text-align: left; outline: 4px solid rgb('. rand(0, 250) .','. rand(0, 250) .','. rand(0, 250) .'); width: 100%; overflow: auto; max-height: 300px;">';
+            if ($var) :
+                print_r($var);
+            else :
+                echo "\n\n\t--- <b>No data recieved by pre() function</b> ---\n\n";
+            endif;
+        echo '</pre>';
+    }
+
+
+    // Dirty JS console logging function, for when you want to see some data, but not in the markup
+    function consolelog($string){
+        echo '<script>console.log("%c" + "'. $string .'", "color:brown;background:#ddd;font-weight:bold;padding:2px 4px;");</script>';
+    }
 
 
     // Settings page
