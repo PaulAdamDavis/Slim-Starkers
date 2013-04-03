@@ -18,6 +18,7 @@
 
 
     // Dirty JS console logging function, for when you want to see some data, but not in the markup
+    // TODO: Make this function recognise objects & arrays and display as such
     function consolelog($string){
         echo '<script>console.log("%c" + "'. $string .'", "color:brown;background:#ddd;font-weight:bold;padding:2px 4px;");</script>';
     }
