@@ -3,13 +3,13 @@
 *****/
 a {
 	&:link {
-		color: @main;
+		color: $main;
 	}
 	&:visited {
-		color: darken(@main, 10);
+		color: darken($main, 10);
 	}
 	&:hover, &:active, &:focus {
-		color: darken(@main, 20);
+		color: darken($main, 20);
 	}
 }
 em, i, .italic {
