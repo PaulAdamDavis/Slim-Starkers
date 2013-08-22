@@ -1,3 +1,6 @@
+// Makes console.log safe to use (no IE errors)
+window.console||(console={log:function(){}});
+
 /*!
  * HTML5 Placeholder jQuery Plugin v1.7
  * @link http://github.com/mathiasbynens/Placeholder-jQuery-Plugin
