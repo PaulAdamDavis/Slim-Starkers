@@ -3,7 +3,7 @@
     add_action('admin_menu', 'extra_settings_menu');
 
     function extra_settings_menu() {
-        add_menu_page('Extra Settings', 'Extra Settings', 'administrator', __FILE__, 'extra_settings_html');
+        add_menu_page('Extra Settings', 'Extra Settings', 'administrator', 'extra-settings', 'extra_settings_html');
         add_action('admin_init', 'register_mysettings');
     }
 
