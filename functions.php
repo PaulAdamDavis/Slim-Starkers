@@ -50,6 +50,15 @@
         return '&nbsp;<a href="'. get_permalink($post->ID) . '">' . 'Read more' . '</a>';
     }
     add_filter('excerpt_more', 'new_excerpt_more');
+    
+    
+    // Remove width and height attributes from inserted images
+    function remove_width_height_attribute($html) {
+       $html = preg_replace('/(width|height)="\d*"\s/', "", $html);
+       return $html;
+    }
+    add_filter('post_thumbnail_html', 'remove_width_height_attribute', 10);
+    add_filter('image_send_to_editor', 'remove_width_height_attribute', 10);
 
 
     // Add first & last classes to wp_nav_menu menus
